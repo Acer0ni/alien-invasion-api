@@ -22,7 +22,7 @@ logs out the current user
 
 ### check_highscore
 
-(user, current_score) -> ?
+(user, current_score) -> high_score
 
 grabs the current highscore if there is one and compares it to the current_score. if current_score is higher then the highscore or there is no highscore creates a new highscore object.
 
