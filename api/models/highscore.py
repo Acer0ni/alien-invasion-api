@@ -1,5 +1,5 @@
 from django.db import models
-from models.users import User
+from api.models.users import User
 
 
 class Highscore(models.Model):
