@@ -1,14 +1,14 @@
-from ninja import ModelSchema
-from models.highscore import Highscore
+# from ninja import ModelSchema
+# from api.models.highscore import Highscore
 
 
-class HighscoreSchemaIn(ModelSchema):
-    class config:
-        model = Highscore
-        model_fields = ["score", "user"]
+# class HighscoreSchemaIn(ModelSchema):
+#     class Config:
+#         model = Highscore
+#         model_fields = ["score", "user"]
 
 
-class HighscoreSchemaOut(ModelSchema):
-    class config:
-        model = Highscore
-        model_fields = ["id", "score", "user.username"]
+# class HighscoreSchemaOut(ModelSchema):
+#     class Config:
+#         model = Highscore
+#         model_fields = ["id", "score", "user.username"]

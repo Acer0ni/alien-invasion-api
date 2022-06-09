@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.shortcuts import redirect
-from api.api import api
+from api.ninja import api
 
 
 def redirect_to_docs(request):

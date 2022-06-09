@@ -11,4 +11,4 @@ api = NinjaAPI(
 from api.views.user import router as user_router
 
 
-api.add_router("highscore", user_router)
+api.add_router("user", user_router)
