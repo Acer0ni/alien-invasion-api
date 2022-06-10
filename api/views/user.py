@@ -1,5 +1,3 @@
-from json import JSONEncoder
-from django.http import JsonResponse
 from ninja import Router
 from api.models.users import User
 from api.schemas.users import UserSchemaIn, UserSchemaOut

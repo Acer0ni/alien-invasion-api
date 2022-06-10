@@ -11,4 +11,4 @@ class ScoreSchemaIn(ModelSchema):
 class ScoreSchemaOut(ModelSchema):
     class Config:
         model = Score
-        model_fields = ["id", "score", "user.username"]
+        model_fields = ["id", "score", "user"]
