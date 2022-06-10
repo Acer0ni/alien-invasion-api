@@ -33,3 +33,8 @@ def create_score_test(request, incoming_score: ScoreSchemaIn):
 @router.get("/", response=List[ScoreSchemaOut])
 def get_scores(request):
     return Score.objects.all()
+
+
+@router.get("/highscore", response=ScoreSchemaOut)
+def get_highscore(request):
+    return Score.objects.all().order_by("-score").first()
