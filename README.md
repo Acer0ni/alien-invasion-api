@@ -1,6 +1,6 @@
 # Alien-Invasion-api
 
-This api was built and designed to work along with the alien invaders app and track it's users and high-scores. The general idea is that each copy of alien invaders will talk to this api to create a Global Highscores.
+This api was built and designed to work along with the [Alien Invaders](https://github.com/Acer0ni/alien-invasion) app and track it's users and high-scores. The general idea is that each copy of alien invaders will talk to this api to create a Global Highscores.
 
 ## Installation
 
@@ -16,6 +16,6 @@ You can then run the server by running `python3 manage.py runserver` in the appl
 
 - Top Ten Highscores
 
-- Personal Highscore
+- Personal Highscores
 
 - Seasonal/Daily Highscores
