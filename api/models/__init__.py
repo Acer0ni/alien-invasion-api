@@ -1,2 +1,2 @@
-from .highscore import Highscore
+from .score import Score
 from .users import User
