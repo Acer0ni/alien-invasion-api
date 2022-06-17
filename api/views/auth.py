@@ -21,9 +21,15 @@ def register_user(request, incoming_user: UserSchemaIn):
 @router.post("/login", response=UserSchemaOut, auth=None)
 def user_login(request, data: loginSchema):
     logged_in_user = authenticate(
-        request, username=data.username, password=data.usernames
+        request, username=data.username, password=data.password
     )
     if logged_in_user is not None:
         login(request, logged_in_user)
         return logged_in_user
     raise HttpError(403, "invalid credentials")
+
+
+@router.post("/logout")
+def user_logout(request):
+    logout(request)
+    return {"msg": "you have logged out succesfully"}
