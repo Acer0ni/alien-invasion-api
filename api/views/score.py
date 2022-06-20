@@ -9,19 +9,21 @@ router = Router(tags=["score"])
 # todo rename the create functions
 @router.post("/", response=ScoreSchemaOut)
 def create_score(request, incoming_score: ScoreSchemaIn):
-    current_highscore = Score.objects.all().order_by("-score").first()
-    score_status = check_for_highscore(current_highscore.score, incoming_score.score)
-    if not score_status:
+    current_highscore = Score.objects.order_by("-score").first()
+    is_highscore = check_for_highscore(current_highscore.score, incoming_score.score)
+    if not is_highscore:
         return current_highscore
     return create_score_test(request, incoming_score)
 
 
+# move this to own file
 def check_for_highscore(current_highscore, incoming_score):
     if not current_highscore or incoming_score > current_highscore:
         return True
     return False
 
 
+# turn this into a function
 @router.post("/score", response=ScoreSchemaOut)
 def create_score_test(request, incoming_score: ScoreSchemaIn):
     user = User.objects.get(id=incoming_score.user)

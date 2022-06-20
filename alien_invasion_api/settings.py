@@ -10,22 +10,44 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+settings = {
+    "production": {
+        "debug": False,
+        "allowed_hosts": ["api", "localhost", "forum.pwnschool.org"],
+        "csrf_trusted_origins": ["https://forum.pwnschool.org"],
+    },
+    "development": {
+        "debug": True,
+        "allowed_hosts": ["api", "localhost", "127.0.0.1"],
+        "csrf_trusted_origins": ["http://localhost", "http://127.0.0.1"],
+    },
+}
+ENV = os.environ.get("HIGHSCORE_ENV", "production")
+
+if ENV not in settings.keys():
+    ENV = "production"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-&e7d#=y*o&gmkw2nm5w4)dixe%%njxb5eydl*3o8$zz2j-*f6b"
+SECRET_KEY = os.environ.get(
+    "HIGHSCORE_SECRET_KEY",
+    "django-insecure-cxlmfcn_ys8oa+33$1xe1)^^6-pkqm-8^@x(%3%cw-ibaipo(^",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = settings.get(ENV).get("debug")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = settings.get(ENV).get("allowed_hosts")
+CSRF_TRUSTED_ORIGINS = settings.get(ENV).get("csrf_trusted_origins")
+# CSRF_USE_SESSIONS = True
 
 
 # Application definition
