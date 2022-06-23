@@ -13,7 +13,7 @@ def create_score(request, incoming_score: ScoreSchemaIn):
     is_highscore = check_for_highscore(current_highscore.score, incoming_score.score)
     if not is_highscore:
         return current_highscore
-    return create_score_test(request, incoming_score)
+    return create_score_object(request, incoming_score)
 
 
 # move this to own file
@@ -23,9 +23,7 @@ def check_for_highscore(current_highscore, incoming_score):
     return False
 
 
-# turn this into a function
-@router.post("/score", response=ScoreSchemaOut)
-def create_score_test(request, incoming_score: ScoreSchemaIn):
+def create_score_object(request, incoming_score: ScoreSchemaIn):
     user = User.objects.get(id=incoming_score.user)
     new_score = Score.objects.create(score=incoming_score.score, user=user)
     new_score.save()
@@ -37,6 +35,6 @@ def get_scores(request):
     return Score.objects.all()
 
 
-@router.get("/highscore", response=ScoreSchemaOut)
+@router.get("/highscore", response=ScoreSchemaOut, auth=None)
 def get_highscore(request):
     return Score.objects.all().order_by("-score").first()
