@@ -10,10 +10,11 @@ router = Router(tags=["score"])
 @router.post("/", response=ScoreSchemaOut)
 def create_score(request, incoming_score: ScoreSchemaIn):
     current_highscore = Score.objects.order_by("-score").first()
-    is_highscore = check_for_highscore(current_highscore.score, incoming_score.score)
-    if not is_highscore:
+    new_score = create_score_object(request, incoming_score)
+    if current_highscore.score > new_score.score:
         return current_highscore
-    return create_score_object(request, incoming_score)
+    else:
+        return new_score
 
 
 # move this to own file
