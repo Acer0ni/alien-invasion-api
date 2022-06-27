@@ -5,7 +5,7 @@ from api.models.score import Score
 class ScoreSchemaIn(ModelSchema):
     class Config:
         model = Score
-        model_fields = ["score", "user"]
+        model_fields = ["score"]
 
 
 class ScoreSchemaOut(ModelSchema):
