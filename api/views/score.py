@@ -8,7 +8,7 @@ from api.models.users import User
 
 router = Router(tags=["score"])
 
-# todo rename the create functions
+
 @router.post("/", response=ScoreSchemaOut)
 def create_score(request: HttpRequest, incoming_score: ScoreSchemaIn) -> Score:
     current_highscore: Score = Score.objects.order_by("-score").first()

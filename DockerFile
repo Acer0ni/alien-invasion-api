@@ -1,0 +1,10 @@
+FROM python:3.9
+RUN pip install pipenv
+WORKDIR /app/
+COPY Pipfile \ 
+    Pipfile.lock \
+    manage.py \ 
+    /app/
+RUN pipenv sync
+COPY ./api /app/api
+COPY ./alien_invasion_api /app/alien_invasion_api
