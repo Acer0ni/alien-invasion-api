@@ -20,8 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 settings = {
     "production": {
         "debug": False,
-        "allowed_hosts": ["api", "localhost", "forum.pwnschool.org"],
-        "csrf_trusted_origins": ["https://forum.pwnschool.org"],
+        "allowed_hosts": ["api", "localhost", "ai.games.aceroni.com"],
+        "csrf_trusted_origins": ["https://ai.games.aceroni.com"],
     },
     "development": {
         "debug": True,
