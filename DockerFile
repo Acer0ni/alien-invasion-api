@@ -10,4 +10,4 @@ COPY ./api /app/api
 COPY ./alien_invasion_api /app/alien_invasion_api
 EXPOSE 8000
 CMD pipenv run python3 manage.py migrate \ 
-    uvicorn alien_invasion_api.asgi:application
+    && pipenv run uvicorn alien_invasion_api.asgi:application
