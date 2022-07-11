@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 set -euo pipefail #unofficial strict mode
 git pull
 docker build -t alien_invasion_api .
