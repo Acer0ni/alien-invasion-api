@@ -8,6 +8,7 @@ django-ninja = "*"
 django = "*"
 psycopg2 = "*"
 requests = "*"
+python-dotenv = "*"
 
 [dev-packages]
 mypy = "*"

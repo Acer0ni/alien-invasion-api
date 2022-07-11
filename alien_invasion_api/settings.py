@@ -12,11 +12,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 settings = {
     "production": {
         "debug": False,
@@ -100,10 +101,10 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "alien_invasion",
-        "USER": "postgres",
-        "password": "",
-        "HOST": "localhost",
-        "PORT": "",
+        "USER": os.environ.get("HIGHSCORES_DB_USER",'postgres'),
+        "password": os.environ.get("HIGHSCORES_DB_PASSWORD",'postgres'),
+        "HOST": os.environ.get("HIGHSCORE_DB_HOST",'localhost'),
+        "PORT": os.environ.get("HIGHSCORE_DB_PORT",5432),
     }
 }
 
