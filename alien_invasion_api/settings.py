@@ -101,8 +101,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "alien_invasion",
-        "USER": os.environ.get("HIGHSCORES_DB_USER",'postgres'),
-        "password": os.environ.get("HIGHSCORES_DB_PASSWORD",'postgres'),
+        "USER": os.environ.get("HIGHSCORE_DB_USER",'postgres'),
+        "password": os.environ.get("HIGHSCORE_DB_PASSWORD",'postgres'),
         "HOST": os.environ.get("HIGHSCORE_DB_HOST",'localhost'),
         "PORT": os.environ.get("HIGHSCORE_DB_PORT",5432),
     }
